@@ -8,11 +8,16 @@ class Todo {
   String? todo;
 
   @HiveField(1)
-  String? hour;
+  DateTime? hour;
 
   @HiveField(2)
-  bool? tomorrow;
+  bool? today;
 
-   Todo({required this.todo,required this.hour,required this.tomorrow});
-
+  @HiveField(3)
+  bool? done;
+  Todo(
+      {required this.todo,
+      required this.hour,
+      required this.today,
+      this.done = false});
 }

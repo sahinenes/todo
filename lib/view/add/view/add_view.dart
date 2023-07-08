@@ -1,13 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/core/extension/context_extension.dart';
-import 'package:todo/core/extension/date_extension.dart';
 import 'package:todo/product/models/todo_model.dart';
-import 'package:todo/view/add/controller/add_controller.dart';
+
+import 'package:todo/product/controllers/todo_controller.dart';
 
 class AddView extends StatelessWidget {
-  AddView({super.key});
+  const AddView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class AddView extends StatelessWidget {
             SizedBox(
               height: context.height * 0.03,
             ),
-            _tomorrow(context),
+            _today(context),
             SizedBox(
               height: context.height * 0.04,
             ),
@@ -56,15 +58,23 @@ class AddView extends StatelessWidget {
                           MaterialStatePropertyAll(context.colors.scrim),
                       foregroundColor:
                           MaterialStatePropertyAll(context.colors.background)),
-                  onPressed: () {
-                    if (controller.todo != null || controller.todo != "") {
+                  onPressed: () async {
+                    if (controller.name.text != "") {
                       Todo todo = Todo(
-                          todo: controller.todo,
+                          todo: controller.name.text,
                           hour: controller.hour,
-                          tomorrow: controller.tomorrow);
-                      controller.add(todo);
-                      name.clear();
-                      context.read<TodoNotifier>().setTomorrow = false;
+                          today: controller.today);
+
+                      try {
+                        await controller.add(todo);
+                        controller.name.clear();
+
+                        controller.setToday = false;
+                        Navigator.pop(context);
+                        //showSnackbarTop(context, "Task added.");
+                      } catch (e) {
+                        // showSnackbarTop(context, "We have a problem.");
+                      }
                     }
                   },
                   child: Text(
@@ -84,7 +94,7 @@ class AddView extends StatelessWidget {
     );
   }
 
-  Row _tomorrow(BuildContext context) {
+  Row _today(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,9 +107,9 @@ class AddView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Consumer<TodoNotifier>(
             builder: (context, value, child) => Switch(
-              value: context.watch<TodoNotifier>().tomorrow ?? false,
+              value: context.watch<TodoNotifier>().today ?? false,
               onChanged: (bool value) {
-                context.read<TodoNotifier>().setTomorrow = value;
+                context.read<TodoNotifier>().setToday = value;
               },
             ),
           ),
@@ -134,44 +144,37 @@ class AddView extends StatelessWidget {
       is24HourMode: false,
       itemHeight: context.height * 0.04,
       onTimeChange: (time) {
-        context.read<TodoNotifier>().setHour =
-            time.dateToStringWithFormat(format: 'hh:mm');
+        context.read<TodoNotifier>().setHour = time;
       },
     );
   }
 
-  TextEditingController name = TextEditingController();
-  Row _name(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text(
-          "Name:",
-          style: context.textTheme.bodyMedium,
-        ),
-        SizedBox(
-          width: context.width * 0.04,
-        ),
-        SizedBox(
-          width: context.width * 0.7,
-          child: TextField(
-            onChanged: (value) {
-              context.read<TodoNotifier>().setTodo = name.text;
-            },
-            onSubmitted: (value) =>
-                context.read<TodoNotifier>().setTodo = name.text,
-            onEditingComplete: () =>
-                context.read<TodoNotifier>().setTodo = name.text,
-            controller: name,
+  Widget _name(BuildContext context) {
+    return Consumer<TodoNotifier>(
+      builder: (context, value, child) => Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Text(
+            "Name:",
             style: context.textTheme.bodyMedium,
-            decoration: InputDecoration(
-                hintStyle: context.textTheme.bodySmall,
-                labelStyle: context.textTheme.bodyMedium,
-                hintText: "Write a task"),
           ),
-        ),
-      ],
+          SizedBox(
+            width: context.width * 0.04,
+          ),
+          SizedBox(
+            width: context.width * 0.7,
+            child: TextField(
+              controller: value.name,
+              style: context.textTheme.bodyMedium,
+              decoration: InputDecoration(
+                  hintStyle: context.textTheme.bodySmall,
+                  labelStyle: context.textTheme.bodyMedium,
+                  hintText: "Write a task"),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

@@ -40,7 +40,7 @@ class NavigationRoute {
 
       default:
         return MaterialPageRoute(
-          builder: (context) => Placeholder(
+          builder: (context) => const Placeholder(
            
           ),
         );

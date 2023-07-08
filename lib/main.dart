@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo/core/init/theme/app_theme.dart';
+import 'package:todo/product/controllers/todo_controller.dart';
 import 'package:todo/product/init.dart';
-import 'package:todo/view/add/controller/add_controller.dart';
 import 'package:todo/view/home/view/home_view.dart';
 
 void main() async {

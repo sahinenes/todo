@@ -1,5 +1,7 @@
 {
   "editor.codeActionsOnSave": {
     "source.fixAll": true
-},
+  },
+  "cmake.configureOnOpen": false,
+  "cmake.sourceDirectory": "D:/003-sahinsoftware/005-apps/todo/linux"
 }
