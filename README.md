@@ -1,4 +1,8 @@
-﻿
+### todo
+<p float="left">
+<img src="https://github.com/sahinenes/todo/blob/main/2.jpeg" data-canonical-src="https://github.com/sahinenes/todo/blob/main/2.jpeg" width="200" height="400" />
+<img src="https://github.com/sahinenes/todo/blob/main/1.jpeg" data-canonical-src="https://github.com/sahinenes/todo/blob/main/1.jpeg" width="200" height="400" />
+</p>
 ## Türkçe
 
 
@@ -22,7 +26,7 @@ Bu GitHub sayfasında, görev yönetimi uygulamasının tam kaynak kodunu bulabi
 
 Yerel Flutter geliştirme ortamınızda projeyi çalıştırarak görevlerinizi yönetmeye başlamak için aşağıdaki adımları izleyebilirsiniz:
 
-1.  Bu projeyi GitHub'dan klonlayın: `git clone https://github.com/KullaniciAdi/ProjeAdi.git`
+1.  Bu projeyi GitHub'dan klonlayın: `git clone https://github.com/sahinenes/todo.git`
 2.  Flutter geliştirme ortamınızı kurun ve Flutter SDK'yı projenize ekleyin.
 3.  Bağımlılıkları yüklemek için terminale `flutter pub get` komutunu çalıştırın.
 4.  Projeyi çalıştırmak için terminale `flutter run` komutunu girin.
@@ -54,7 +58,7 @@ On this GitHub page, you can find the complete source code of my Todo applicatio
 
 To run the project in your local Flutter development environment and start managing your tasks, follow these steps:
 
-1.  Clone this project from GitHub: `git clone https://github.com/Username/ProjectName.git`
+1.  Clone this project from GitHub: `git clone https://github.com/sahinenes/todo.git`
 2.  Set up your Flutter development environment and add the Flutter SDK to the project.
 3.  Run `flutter pub get` in the terminal to install the project dependencies.
 4.  Enter `flutter run` in the terminal to launch the Todo application.
