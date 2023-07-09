@@ -1,10 +1,10 @@
-### todo
+## todo
 <p float="left">
 <img src="https://github.com/sahinenes/todo/blob/main/2.jpeg" data-canonical-src="https://github.com/sahinenes/todo/blob/main/2.jpeg" width="200" height="400" />
 <img src="https://github.com/sahinenes/todo/blob/main/1.jpeg" data-canonical-src="https://github.com/sahinenes/todo/blob/main/1.jpeg" width="200" height="400" />
 </p>
 
-## Türkçe
+### Türkçe
 
 
 Merhaba! Flutter ile geliştirdiğim görev yönetimi uygulamasının GitHub sayfama hoş geldiniz. Bu uygulama, görevlerinizi yönetmenize ve kolayca bugünün ve yarının görevlerini görmenize olanak sağlar. Arka planda veri saklamak için Hive paketini, state yönetimi için ise Provider paketini kullandım. Ayrıca, klasör yapısını MVC (Model-View-Controller) tasarım desenini kullanarak düzenledim.
@@ -36,7 +36,7 @@ Yerel Flutter geliştirme ortamınızda projeyi çalıştırarak görevlerinizi 
 
 Bu projeye katkıda bulunmak isterseniz, GitHub sayfasındaki "Issues" bölümünü ziyaret edebilir, mevcut sorunları çözebilir, yeni özellikler önerip uygulayabilir veya uygulamanın işlevselliğini artırabilirsiniz. Yapacağınız her türlü katkı değerlidir!
 
-## English
+### English
 
 
 Hello! Welcome to my GitHub page showcasing a Flutter Todo application I developed. This application allows you to manage your tasks, and conveniently view tasks for today and tomorrow. I utilized Hive package for background storage and Provider package for state management. Additionally, I organized the project's folder structure following the MVC (Model-View-Controller) pattern.
